@@ -38,13 +38,18 @@ fn main() {
     );
 
     let bank = Bank::new();
-    
+
     // If we simply do let other_bank = bank, we're effectively
     // "moving" the value to the other_bank variable.
-    // This will cause an error in the following code if we try
+    // This will cause a compiler error in the following code if we try
     // to reference the bank binding.
+    // Why? Because the at that point there will be no value
+    // associated to the `bank` binding.
 
-    let other_bank = &bank;
+    let other_bank = bank;
 
     println!("{:#?}", bank);
+
+    // How do we solve this?
+    // One way is to pass the `bank` binding to `other_bank`.
 }
