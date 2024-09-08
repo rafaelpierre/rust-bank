@@ -36,9 +36,15 @@ fn main() {
         1,
         String::from("me")
     );
-    let bank = Bank::new();
 
-    print_account(&account);
-    print_account(&account);
+    let bank = Bank::new();
+    
+    // If we simply do let other_bank = bank, we're effectively
+    // "moving" the value to the other_bank variable.
+    // This will cause an error in the following code if we try
+    // to reference the bank binding.
+
+    let other_bank = &bank;
+
     println!("{:#?}", bank);
 }
